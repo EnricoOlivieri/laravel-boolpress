@@ -20,3 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('free-zone')
+    ->group(function () {
+    Route::get('hello', 'TestController@guest')
+    ->name('guestHome');
+});
+
+Route::prefix('restricted-zone')
+    ->group(function () {
+    Route::get('hello', 'TestController@logged')
+    ->name('loggedHome');
+});
+
+
